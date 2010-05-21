@@ -67,7 +67,7 @@ the options are the same as Request.HTML, with one addition:
  - boxOptions (`object`) : options to be passed to the box constructor.
  
 
- Class: FloatBox.Image {#FloatBox.Image}
+Class: FloatBox.Image {#FloatBox.Image}
 ========================================== 
 
 
