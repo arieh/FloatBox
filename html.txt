@@ -1,0 +1,1 @@
+<div style='color:#abc; font-size:2em; line-height:100px; vertical-align:middle; font-weight:bold; text-align:center; width:auto'>I Am a Float Box!</div>
