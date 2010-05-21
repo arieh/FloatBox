@@ -13,7 +13,6 @@
 <h2>Click on any of the links to see it's designated box</h2>
 <ul>
 	<li><a href='javascript:;' id='plain'>Plain</a></li>
-	<li><a href='javascript:;' id='html'>HTML</a></li>
 	<li><a href='javascript:;' id='image'>Image</a></li>
 	<li><a href='javascript:;' id='iframe'>Iframe</a></li>
 </ul>
@@ -25,9 +24,6 @@ document.addEvent('domready',function(){
 	$('plain').addEvent('click',function(){
 		var div = new Element('div').appendText('example text');
 		new FloatBox(div);
-	});
-	$('html').addEvent('click',function(){
-		new FloatBox.HTML({url:'html.html',boxOptions:{size:{x:300, y:100}}});
 	});
 	$('image').addEvent('click',function(){
 		new FloatBox.Image('https://mail.google.com/mail/images/2/5/medsoft/logo.png');
