@@ -68,6 +68,7 @@ the options are the same as Request.HTML, with one addition:
  
 
 Class: FloatBox.Image {#FloatBox.Image}
+
 ========================================== 
 
 
@@ -91,6 +92,7 @@ Note: if not size is defiened, the class will attempt to find out the true image
 
 
 Class: FloatBox.IFrame {#FloatBox.IFrame}
+
 ========================================== 
 
 
