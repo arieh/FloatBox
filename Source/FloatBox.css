@@ -1,0 +1,48 @@
+.box-container{
+    width:auto;
+    height:100%;
+    background:transparent;
+    background:rgba(0,0,0,0.8);
+    z-index:500;
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80000000,endColorstr=#80000000);
+    zoom: 1;
+}
+
+.box-container .box-border{
+    position: absolute;
+    opacity: 0.9;
+    background: #B84949;
+    -moz-border-radius: 20px;
+    -webkit-border-radius:20px;
+    border-radius: 20px;
+    filter: alpha(opacity=90);
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+}
+	
+
+.box-container .close{
+    cursor:pointer;
+}
+
+.box-container .close-box{
+    display:block;
+    position:absolute;
+    height:24px;
+    width:24px;
+    z-index:550;
+    background:url('close.png');
+}
+
+.box-container .box-contained{
+    position:absolute;
+    margin:15px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius:10px;
+    border-radius: 20px;
+	background:#fff;
+	padding:15px;
+}

@@ -1,0 +1,104 @@
+Class: FloatBox {#FloatBox}
+==========================================
+This Class supplies a simple light-box wrapper with a clean cross-browser design.
+
+FloatBox Method: constructor {#FloatBox:constructor}
+---------------------------------
+### Example:
+
+	new FloatBox(elem,options);
+
+### Arguments:
+
+1. elem - (`Element`) an element to be wrapped by the box.
+2. options - (`object`: optional) See below:
+
+### Options:
+
+* size - (`object`: defaults to {400,400}) Height and width of the inner box. format is {x:`int`,y:`int`}. 
+* target - (`Element`: defaulst to `document.body`) what element to inject the box into.
+* rtl - (`bool`: defaults to false) whether the site is RTL or not
+
+FloatBox Method: resize {#FloatBox:resize}
+--------------------------------
+
+resizes the box
+
+### Example:
+
+	box.resize(x,y);
+	
+### Arguments:
+
+1. x - (`int`) new inner-box width
+2. y - (`int`) new inner-box height
+
+FloatBox Method: getInnerBox {#FloatBox:getInnerBox}
+--------------------------------
+
+returns a reference to the inner box element.
+
+### Example:
+
+	box.getInnerBox();
+	
+FloatBox Method: toEkement {#FloatBox:toElement}
+--------------------------------
+
+returns the box wrapper.
+
+Class: FloatBox.HTML {#FloatBox.HTML}
+==========================================
+
+This class can be used to use the box to wrap an HTML AJAX response.
+
+FloatBox.HTML Method: constructor {#FloatBox.HTML:constructor}
+---------------------------------
+### Example:
+
+	new FloatBox.HTML(options)
+	
+### Options:
+
+the options are the same as Request.HTML, with one addition:
+
+ - boxOptions (`object`) : options to be passed to the box constructor.
+ 
+Class: FloatBox.Image {#FloatBox.Image}
+========================================== 
+
+This class can be used to wrap an Image resource with the FloatBox.
+
+FloatBox.Image Method: constructor {#FloatBox.Image:constructor}
+---------------------------------	
+### Example:
+	
+	new FloatBox.Image(src,options)
+	
+### Arguments:
+
+1. src - (`string`) path to the image
+	
+### Options:
+	same as with FloatBox
+	
+Note: if not size is defiened, the class will attempt to find out the true image size.
+
+Class: FloatBox.IFrame {#FloatBox.IFrame}
+========================================== 
+
+This class can be used to wrap an IFrame resource with the FloatBox.
+
+FloatBox.IFrame Method: constructor {#FloatBox.IFrame:constructor}
+---------------------------------	
+### Example:
+	
+	new FloatBox.IFrame(src,options)
+
+### Arguments:
+
+1. src - (`string`) site url
+
+### Options:
+
+same as with FloatBox
