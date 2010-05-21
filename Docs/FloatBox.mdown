@@ -47,10 +47,8 @@ FloatBox Method: toElement {#FloatBox:toElement}
 
 returns the box wrapper.
 
-
 Class: FloatBox.HTML {#FloatBox.HTML}
 ==========================================
-
 
 This class can be used to use the box to wrap an HTML AJAX response.
 
@@ -68,7 +66,6 @@ the options are the same as Request.HTML, with one addition:
  
 
 Class: FloatBox.Image {#FloatBox.Image}
-
 ========================================== 
 
 
@@ -92,7 +89,6 @@ Note: if not size is defiened, the class will attempt to find out the true image
 
 
 Class: FloatBox.IFrame {#FloatBox.IFrame}
-
 ========================================== 
 
 
