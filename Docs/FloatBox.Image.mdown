@@ -1,0 +1,21 @@
+Class: FloatBox.Image {#FloatBox.Image}
+========================================== 
+
+
+This class can be used to wrap an Image resource with the FloatBox.
+
+FloatBox.Image Method: constructor {#FloatBox.Image:constructor}
+---------------------------------	
+
+### Example:
+	
+	new FloatBox.Image(src,options)
+	
+### Arguments:
+
+1. src - (`string`) path to the image
+	
+### Options:
+	same as with FloatBox
+	
+Note: if not size is defiened, the class will attempt to find out the true image size.

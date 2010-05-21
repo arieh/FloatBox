@@ -1,0 +1,16 @@
+Class: FloatBox.HTML {#FloatBox.HTML}
+==========================================
+
+This class can be used to use the box to wrap an HTML AJAX response.
+
+FloatBox.HTML Method: constructor {#FloatBox.HTML:constructor}
+---------------------------------
+### Example:
+
+	new FloatBox.HTML(options)
+	
+### Options:
+
+the options are the same as Request.HTML, with one addition:
+
+ - boxOptions (`object`) : options to be passed to the box constructor.
