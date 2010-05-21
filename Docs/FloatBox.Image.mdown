@@ -1,7 +1,5 @@
 Class: FloatBox.Image {#FloatBox.Image}
-========================================== 
-
-
+==========================================
 This class can be used to wrap an Image resource with the FloatBox.
 
 FloatBox.Image Method: constructor {#FloatBox.Image:constructor}
