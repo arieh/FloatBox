@@ -1,0 +1,39 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd>
+
+<html>
+<head>
+	<title>FloatBox</title>
+	<meta http-equiv="Content-Type" content="text/html; charset='UTF-8'" />
+	<link rel='stylesheet' type='text/css' href='../Source/FloatBox.css' />
+</head>
+<body>
+<ul>
+	<li><a href='javascript:;' id='plain'>Plain</a></li>
+	<li><a href='javascript:;' id='html'>HTML</a></li>
+	<li><a href='javascript:;' id='image'>Image</a></li>
+	<li><a href='javascript:;' id='iframe'>Iframe</a></li>
+</ul>
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/mootools/1.2.4/mootools-yui-compressed.js'></script>
+<script type='text/javascript' src='Asset.js'></script>
+<script type='text/javascript' src='../Source/FloatBox.js'></script>
+<script type='text/javascript'>
+document.addEvent('domready',function(){
+	$('plain').addEvent('click',function(){
+		var div = new Element('div').appendText('example text');
+		new FloatBox(div);
+	});
+	$('html').addEvent('click',function(){
+		new FloatBox.HTML({url:'html.txt',boxOptions:{size:{x:300, y:100}}});
+	});
+	$('image').addEvent('click',function(){
+		new FloatBox.Image('https://mail.google.com/mail/images/2/5/medsoft/logo.png');
+	});
+	$('iframe').addEvent('click',function(){
+		new FloatBox.IFrame('http://im-haima.co.il/');
+	});
+});
+</script>
+</body>
+</html>
