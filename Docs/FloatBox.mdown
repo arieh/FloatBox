@@ -46,3 +46,40 @@ FloatBox Method: toElement {#FloatBox:toElement}
 --------------------------------
 
 returns the box wrapper.
+
+Class: FloatBox.HTML {#FloatBox.HTML}
+==========================================
+
+This class can be used to use the box to wrap an HTML AJAX response.
+
+FloatBox.HTML Method: constructor {#FloatBox.HTML:constructor}
+---------------------------------
+### Example:
+
+	new FloatBox.HTML(options)
+	
+### Options:
+
+the options are the same as Request.HTML, with one addition:
+
+ - boxOptions (`object`) : options to be passed to the box constructor.
+
+Class: FloatBox.Image {#FloatBox.Image}
+==========================================
+This class can be used to wrap an Image resource with the FloatBox.
+
+FloatBox.Image Method: constructor {#FloatBox.Image:constructor}
+---------------------------------	
+
+### Example:
+	
+	new FloatBox.Image(src,options)
+	
+### Arguments:
+
+1. src - (`string`) path to the image
+	
+### Options:
+	same as with FloatBox
+	
+Note: if not size is defiened, the class will attempt to find out the true image size.
