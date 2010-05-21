@@ -83,3 +83,23 @@ FloatBox.Image Method: constructor {#FloatBox.Image:constructor}
 	same as with FloatBox
 	
 Note: if not size is defiened, the class will attempt to find out the true image size.
+
+Class: FloatBox.IFrame {#FloatBox.IFrame}
+==========================================
+
+This class can be used to wrap an IFrame resource with the FloatBox.
+
+FloatBox.IFrame Method: constructor {#FloatBox.IFrame:constructor}
+---------------------------------	
+
+### Example:
+	
+	new FloatBox.IFrame(src,options)
+
+### Arguments:
+
+1. src - (`string`) site url
+
+### Options:
+
+same as with FloatBox

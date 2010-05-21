@@ -1,6 +1,5 @@
 Class: FloatBox.IFrame {#FloatBox.IFrame}
-========================================== 
-
+==========================================
 
 This class can be used to wrap an IFrame resource with the FloatBox.
 
