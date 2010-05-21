@@ -6,10 +6,10 @@ The Class was developed when working on one of my sites. It wasn't realy ment to
 
 It supplies 4 different methods of wrapping content:
 
-	1. A simple wrapper for any HTML element you might send it.
-	2. An AJAX wrapper.
-	3. An Image wrapper.
-	4. An IFrame wrapper.
+1. A simple wrapper for any HTML element you might send it.
+2. An AJAX wrapper.
+3. An Image wrapper.
+4. An IFrame wrapper.
 
 ![Screenshot](http://github.com/arieh/FloatBox/raw/master/screenshot.png)
 
