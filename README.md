@@ -9,7 +9,7 @@ It supplies 4 different methods of wrapping content:
 2. An AJAX wrapper.
 3. An Image wrapper.
 4. An IFrame wrapper.
-![Screenshot]()
+![Screenshot](http://github.com/arieh/FloatBox/raw/master/screenshot.png)
 
 How To Use
 -------------
