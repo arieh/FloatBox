@@ -1,3 +1,19 @@
+/*
+---
+description: This is yet another lightbox widget i developed for one of my sites. Simple interface for creating nicely styled boxes.
+
+license: MIT-style
+
+authors:
+- Arieh Glazer
+
+requires:
+- core/1.2.4: [Class, Class.Extras, Element, Assets]
+
+provides: [FloatBox, FloatBox.HTML, FloatBox.Image, FloatBox.IFrame]
+
+...
+*/
 var FloatBox = new Class({
 	Implements : [Options],
 	options : {
