@@ -106,8 +106,9 @@ FloatBox.HTML = new Class({
 });
 
 FloatBox.Image = new Class({
-	Extends : FloatBox,
-	initialize : function(src,options){
+	Extends : FloatBox
+	, options : {fit:true}
+	, initialize : function(src,options){
 		if (!options) options = {};
 		var self = this
 			, dummy
@@ -117,7 +118,7 @@ FloatBox.Image = new Class({
 						dummy = new Element('div',{styles : {'position':'absolute','right':-9999}})
 							.adopt(image)
 							.inject(document.body);
-						options.size = self.getSize(image);
+						options.size = self.options.fit ? self.getSize(image) : image.getSize();
 						image.dispose();
 						dummy.destroy();
 					}else{
