@@ -83,7 +83,7 @@ FloatBox.Image Method: constructor {#FloatBox.Image:constructor}
 
 1. fit (`bool`) : If image is larger than screen, fit it's size (used only when size is not supplied).
 	
-Note: if not size is defiened, the class will attempt to find out the true image size.
+_Note: if size is not defiened, the class will attempt to find out the true image size._
 
 Class: FloatBox.IFrame {#FloatBox.IFrame}
 ==========================================
