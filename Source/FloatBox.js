@@ -1,19 +1,3 @@
-/*
----
-description: This is yet another lightbox widget i developed for one of my sites. Simple interface for creating nicely styled boxes.
-
-license: MIT-style
-
-authors:
-- Arieh Glazer
-
-requires:
-- core/1.2.4: [Class, Class.Extras, Element, Assets]
-
-provides: [FloatBox, FloatBox.HTML, FloatBox.Image, FloatBox.IFrame]
-
-...
-*/
 var FloatBox = new Class({
 	Implements : [Options],
 	options : {
@@ -22,7 +6,6 @@ var FloatBox = new Class({
 		, rtl : false
 	}
 	, box : new Element('div',{'class':'box-container'})
-	, contained : null
 	, initialize : function(elem,options){
 		this.setOptions(options);
 		
@@ -36,15 +19,13 @@ var FloatBox = new Class({
 		var border =  new Element('div',{'class':'box-border'})
 		    , close = new Element('span',{'class':'close close-box'})
 		    , screen_size = Window.getSize()
-		    , top = (screen_size.y-this.options.size.y)/2
+		    , top = (screen_size.y-this.options.size.y-60)/2
 			, side = (this.options.rtl)? 'right' : 'left'
-		    , side_p = (screen_size.x-this.options.size.x)/2;
-		
+		    , side_p = (screen_size.x-this.options.size.x-60)/2;
+			
 		elem.addClass('box-contained');        		
 		
-		this.box.adopt(close,border,elem)
-		    .setStyle('padding-top' , top)
-			.setStyle('padding-'+side , side_p);
+		this.box.adopt(close,border,elem).setStyle('padding' , top +' '+side_p);
 		
 		border.setStyles({
 			height:this.options.size.y+60,
@@ -57,8 +38,6 @@ var FloatBox = new Class({
 		});
 		
 		close.setStyle('top',top+5).setStyle(side,side_p+5);
-		
-		this.contained = elem;
 	}
 	, attachEvents : function(){
 		var closeBox = this.close.bind(this);
@@ -99,9 +78,9 @@ var FloatBox = new Class({
 		this.box.getElement('.box-contained').morph({
 			height:y,
 			width:x
-		});		
-	}
-	, getInnerBox : function(){return this.contained;}
+		});
+		
+	}	
 });
 
 FloatBox.HTML = new Class({
@@ -111,10 +90,11 @@ FloatBox.HTML = new Class({
 			, self = this
 			,cont;
 		
-		if (options.boxOptions) this.setOptions(options.boxOptions);
+		if (options.boxOptions) this.setOptions(boxOptions);
 		
 		this.createBox(new Element('div'));
-		options.update = this.contained;
+		cont = this.box.getElement('.box-contained');	
+		options.update = cont;
 		req = new Request.HTML(options);
 		req.addEvent('success',function(){
 			self.attachEvents();
@@ -137,7 +117,7 @@ FloatBox.Image = new Class({
 						dummy = new Element('div',{styles : {'position':'absolute','right':-9999}})
 							.adopt(image)
 							.inject(document.body);
-						options.size = image.getSize();
+						options.size = self.getSize(image);
 						image.dispose();
 						dummy.destroy();
 					}else{
@@ -150,6 +130,34 @@ FloatBox.Image = new Class({
 					self.box.inject(self.options.target);
 				}
 			});
+	}
+	, getSize : function(img){
+		var w_size = Window.getSize()
+			, img_size = img.getSize()
+			, max_height = w_size.y-100
+			, max_width  = w_size.x-100
+			, h_ratio = img_size.x / img_size.y
+			, w_ratio = img_size.y / img_size.x
+			, h_diff = img_size.y - w_size.y
+			, w_diff = img_size.x - w_size.x
+			, size = img.getSize();
+		
+		if (h_diff > w_diff && h_diff>100){
+			img.setStyles({
+				'height' : max_height
+				, 'width' : w_ratio * max_height
+			});
+			size.y = max_height;
+			size.x = w_ratio * max_height;
+		}else if (w_diff >100){
+			img.setStyles({
+				height : max_width * h_ratio
+				, width : max_width
+			});
+			size.y = max_width * h_ratio;
+			size.x = max_width;
+		}
+		return size;
 	}
 });
 
