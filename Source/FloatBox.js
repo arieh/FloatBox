@@ -143,14 +143,14 @@ FloatBox.Image = new Class({
 			, w_diff = img_size.x - w_size.x
 			, size = img.getSize();
 		
-		if (h_diff > w_diff && h_diff>100){
+		if (h_diff > w_diff && h_diff>-101){
 			img.setStyles({
 				'height' : max_height
 				, 'width' : w_ratio * max_height
 			});
 			size.y = max_height;
 			size.x = w_ratio * max_height;
-		}else if (w_diff >100){
+		}else if (w_diff >-101){
 			img.setStyles({
 				height : max_width * h_ratio
 				, width : max_width
