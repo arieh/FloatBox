@@ -180,16 +180,20 @@ FloatBox.Image = new Class({
 
 FloatBox.IFrame = new Class({
 	Extends : FloatBox
+	, options : {
+		frameOptions : {
+			styles :{border:0}
+		}
+	}
 	,initialize : function(src,options){
 		this.setOptions(options);
-		var iframe = new IFrame({
-			'src' : src
-			, styles :{
-				width : this.options.size.x
-				, height: this.options.size.y
-				, border:0
-			}
-		});
+		
+		this.options.frameOptions.styles.width = this.options.size.x;
+		this.options.frameOptions.styles.height = this.options.size.y;
+		this.options.frameOptions.src = src;
+		
+		var iframe = new IFrame(this.options.frameOptions);
+		
 		this.parent(iframe);
 	}
 });

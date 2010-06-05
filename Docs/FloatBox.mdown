@@ -102,5 +102,4 @@ FloatBox.IFrame Method: constructor {#FloatBox.IFrame:constructor}
 1. src - (`string`) site url
 
 ### Options:
-
-same as with FloatBox
+1. frameOptions (`object`) : options to pass to the IFrame constructor (as specified on the Element docs).
