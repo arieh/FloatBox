@@ -41,7 +41,11 @@ var FloatBox = new Class({
 			
 		elem.addClass('box-contained');        		
 		
-		this.box.adopt(close,border,elem).setStyle('padding' , top +' '+side_p);
+		this.box.adopt(close,border,elem).setStyles({
+			'padding-top' : top
+			,'padding-right' : side_p
+			,'padding-left' : side_p
+		});
 		
 		border.setStyles({
 			height:this.options.size.y+60,
