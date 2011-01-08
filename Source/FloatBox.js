@@ -8,20 +8,24 @@ authors:
 - Arieh Glazer
 
 requires:
-- core/1.3: [Class, Class.Extras, Element, Assets]
+- core/1.3: [Class, Class.Extras, Element,Element.Dimentions,Element.Event,Element.Style,Fx,Fx.Morph,Request.HTML]
+-more/1.3: [Assets]
 
 provides: [FloatBox, FloatBox.HTML, FloatBox.Image, FloatBox.IFrame]
 
 ...
 */
-var FloatBox = new Class({
-	Implements : [Options],
+(function($){
+
+var FloatBox = this.FloatBox = new Class({
+	Implements : [Options, Events],
 	options : {
 		size : {x :400, y:400}
 		, target : document.body
 		, rtl : false
+        , showOnStart : true
 	}
-	, box : new Element('div',{'class':'box-container'})
+	, box : null
 	, initialize : function(elem,options){
 		this.setOptions(options);
 		
@@ -29,7 +33,7 @@ var FloatBox = new Class({
 		
 		this.attachEvents();
 		
-		this.box.inject(this.options.target);
+        this.show();
 	}
 	, createBox : function(elem){	
 		var border =  new Element('div',{'class':'box-border'})
@@ -41,6 +45,8 @@ var FloatBox = new Class({
 			
 		elem.addClass('box-contained');        		
 		
+        this.box = new Element('div',{'class':'box-container'});
+        
 		this.box.adopt(close,border,elem).setStyles({
 			'padding-top' : top
 			,'padding-right' : side_p
@@ -60,22 +66,35 @@ var FloatBox = new Class({
 		close.setStyle('top',top+5).setStyle(side,side_p+5);
 	}
 	, attachEvents : function(){
-		var closeBox = this.close.bind(this);
+		var closeBox = this.close.bind(this), box = this.box;
 		this.box.getElements('.close').addEvent('click',function(){closeBox();});
 		
-		if (Browser.Engine.trident){
-		    $(document.body).addEvent('click',function(e){
-		        if ($(box).contains(e.target)) return;
-		        closeBox();			
-		    });
-		}else{
-		    this.box.addEvent('click',function(e){
-		        if (e.target==this) closeBox();
-		    });
-		}
+	    document.addEvents({
+            'click' : function close_box(e){
+                if (e.target == box){
+                    closeBox();
+                    document.removeEvent('click',close_box);
+                }
+            }
+            , 'keydown' : function esc(e){
+                if (e.code == 27) {
+                    closeBox();
+                    document.removeEvent('keydown',esc);
+                }
+            }
+        });
 	}
+    , show : function(){
+		this.box.inject(this.options.target);
+        this.fireEvent('show');
+    }
+    , hide : function(){
+        this.box.dispose();
+        this.fireEvent('hide');
+    }
 	, close : function(){
 		this.box.destroy();
+        this.fireEvent('close');
 	}
 	, toElement : function(){return this.box;}
 	, resize : function(x,y){
@@ -110,7 +129,7 @@ FloatBox.HTML = new Class({
 			, self = this
 			,cont;
 		
-		if (options.boxOptions) this.setOptions(boxOptions);
+		if ('boxOptions' in options) this.setOptions(options.boxOptions);
 		
 		this.createBox(new Element('div'));
 		cont = this.box.getElement('.box-contained');	
@@ -201,3 +220,5 @@ FloatBox.IFrame = new Class({
 		this.parent(iframe);
 	}
 });
+
+})(document.id);

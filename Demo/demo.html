@@ -16,11 +16,12 @@
 	<li><a href='javascript:;' id='l-image'>Large Image</a></li>
 	<li><a href='javascript:;' id='iframe'>Iframe</a></li>
 </ul>
-<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/mootools/1.2.4/mootools-yui-compressed.js'></script>
+<script type='text/javascript' src='mootools-core-1.3.js'></script>
 <script type='text/javascript' src='Asset.js'></script>
 <script type='text/javascript' src='../Source/FloatBox.js'></script>
 <script type='text/javascript'>
-document.addEvent('domready',function(){
+(function($){
+
 	$('plain').addEvent('click',function(){
 		var div = new Element('div').appendText('example text');
 		new FloatBox(div);
@@ -37,7 +38,8 @@ document.addEvent('domready',function(){
 	$('iframe').addEvent('click',function(){
 		new FloatBox.IFrame('http://im-haima.co.il/');
 	});
-});
+
+})(document.id);
 </script>
 </body>
 </html>
