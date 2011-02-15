@@ -18,6 +18,7 @@ FloatBox Method: constructor {#FloatBox:constructor}
 * size - (`object`: defaults to {400,400}) Height and width of the inner box. format is {x:`int`,y:`int`}. 
 * target - (`Element`: defaulst to `document.body`) what element to inject the box into.
 * rtl - (`bool`: defaults to false) whether the site is RTL or not
+* closeOnOutside - (`bool`: default is true) whether to close the box when the mouse is clicked outside it / the `esc` key is pressed 
 
 FloatBox Method: resize {#FloatBox:resize}
 --------------------------------

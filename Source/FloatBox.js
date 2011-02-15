@@ -24,6 +24,7 @@ var FloatBox = this.FloatBox = new Class({
 		, target : document.body
 		, rtl : false
         , showOnStart : true
+        , closeOnOutside : true
 	}
 	, box : null
 	, initialize : function(elem,options){
@@ -68,21 +69,25 @@ var FloatBox = this.FloatBox = new Class({
 	, attachEvents : function(){
 		var closeBox = this.close.bind(this), box = this.box;
 		this.box.getElements('.close').addEvent('click',function(){closeBox();});
-		
-	    document.addEvents({
-            'click' : function close_box(e){
-                if (e.target == box){
-                    closeBox();
-                    document.removeEvent('click',close_box);
+
+
+		if (this.options.closeOnOutside){
+            document.addEvents({
+                'click' : function close_box(e){
+                    if (e.target == box){
+                        closeBox();
+                        document.removeEvent('click',close_box);
+                    }
                 }
-            }
-            , 'keydown' : function esc(e){
-                if (e.code == 27) {
-                    closeBox();
-                    document.removeEvent('keydown',esc);
+                , 'keydown' : function esc(e){
+                    if (e.code == 27) {
+                        closeBox();
+                        document.removeEvent('keydown',esc);
+                    }
                 }
-            }
-        });
+            });
+        }
+
 	}
     , show : function(){
 		this.box.inject(this.options.target);
