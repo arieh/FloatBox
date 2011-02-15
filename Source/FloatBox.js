@@ -9,7 +9,7 @@ authors:
 
 requires:
 - core/1.3: [Class, Class.Extras, Element,Element.Dimentions,Element.Event,Element.Style,Fx,Fx.Morph,Request.HTML]
--more/1.3: [Assets]
+- more/1.3: [Assets]
 
 provides: [FloatBox, FloatBox.HTML, FloatBox.Image, FloatBox.IFrame]
 
@@ -125,21 +125,34 @@ var FloatBox = this.FloatBox = new Class({
 FloatBox.HTML = new Class({
 	Extends : FloatBox,
 	initialize : function(options){
-		var req
+		function inject(){
+			self.box.inject(self.options.target);
+        }
+        
+        var req
 			, self = this
 			,cont;
 		
+        options = options || {};
+
 		if ('boxOptions' in options) this.setOptions(options.boxOptions);
 		
 		this.createBox(new Element('div'));
-		cont = this.box.getElement('.box-contained');	
-		options.update = cont;
-		req = new Request.HTML(options);
-		req.addEvent('success',function(){
-			self.attachEvents();
+		this.attachEvents();
+        cont = this.box.getElement('.box-contained');	
+        
+        options.update = cont;
+        options.onSuccess = function(){
 			self.box.inject(self.options.target);
-		});
-		
+        }
+        options.onFailure = function(x){
+            if (x.responseText) cont.set('html',x.responseText);
+            else return;
+			self.box.inject(self.options.target);
+        };
+        
+
+		req = new Request.HTML(options);
 		req.send();
 	}
 });
